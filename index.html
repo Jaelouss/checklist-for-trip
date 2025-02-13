@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Чек ліст для різних видів подорожей \ Check List for different types of travel"
+    />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon" />
+    <title>Check list for the trip</title>
+  </head>
+  <body>
+    <header>
+      <nav class="nav">
+        <button type="button" class="tab" data-tab="1">City</button>
+        <button type="button" class="tab" data-tab="2">Campsite</button>
+        <button type="button" class="tab" data-tab="3">Beach</button>
+        <button type="button" class="tab" data-tab="4">Active</button>
+        <button type="button" class="tab" data-tab="5">Hotels/spa</button>
+        <button type="button" class="tab" data-tab="6">Car</button>
+      </nav>
+      <div class="lang">
+        <button class="lang-select" data-lang="eng">ENG</button
+        ><button class="lang-select" data-lang="ua">UA</button>
+      </div>
+    </header>
+    <main>
+      <h1 class="mainTitle">Welcome to a check-in for travel!</h1>
+      <p class="mainParagraph">Choose the type of trip from the tabs above.</p>
+
+      <ul class="list list-main" data-list></ul>
+      <ol class="list list-sub" data-sub-list></ol>
+    </main>
+    <footer>
+      <input type="text" id="search" placeholder="Пошук міста..." />
+      <a>Jaelous</a>
+    </footer>
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
