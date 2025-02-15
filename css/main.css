@@ -778,6 +778,7 @@ body {
   margin-inline: auto;
   padding-top: 20px;
   padding-bottom: 20px;
+  background-image: url(../img/wood.jpg);
 }
 
 header,
@@ -789,6 +790,7 @@ footer {
           box-sizing: border-box;
   width: 100%;
   background-color: var(--main-bgc);
+  background-size: cover;
 }
 
 header {
