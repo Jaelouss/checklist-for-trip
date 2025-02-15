@@ -55,12 +55,24 @@
           data-addCheckBox-label
           >Add Your checkbox in list</label
         >
-        <input type="text" id="addCheckBox" class="input input__add" />
+        <input
+          enterkeyhint="done"
+          type="text"
+          id="addCheckBox"
+          class="input input__add"
+        />
       </div>
     </main>
     <footer>
       <button data-reset type="button" class="button button__reset">
         Reset All
+      </button>
+      <button
+        data-reset-category
+        type="button"
+        class="button button__reset button__reset-category"
+      >
+        Reset Category
       </button>
       <label for="search" class="label label__search">
         <input

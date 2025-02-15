@@ -80,6 +80,7 @@ inputs.addCheckBox.addEventListener('keydown', (event) => {
     addUserCheckBox(lsData);
   }
 });
+
 lists.sub.addEventListener('click', (event) => {
   if (event.target.tagName === 'BUTTON') {
     const elem = event.target.closest('[data-user_added]');
@@ -107,6 +108,36 @@ lists.sub.addEventListener('click', (event) => {
       setLocal(LOCAL_KEY, lsData);
       elem.remove();
     }
+  }
+});
+
+inputs.searchCity.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    const city = event.target.value.trim();
+    if (city) {
+      const googleMapsURL = `https://www.google.com/maps?q=${encodeURIComponent(
+        city
+      )}`;
+      window.open(googleMapsURL, '_blank');
+    }
+  }
+});
+
+elements.resetCategory.addEventListener('click', (event) => {
+  const mainCategoryList = document.querySelector('input[type="radio"]')?.name;
+  const subCategoryList = document.querySelector(
+    'input[type="checkbox"]'
+  )?.name;
+  if (subCategoryList) {
+    lsData.userSelectedCheckBox[mainCategoryList][subCategoryList] = [];
+    lsData.userAddedCheckBox[mainCategoryList][subCategoryList] = [];
+    setLocal(LOCAL_KEY, lsData);
+    markup(lsData);
+  }
+  if (mainCategoryList) {
+    lsData.userSelectedRadioBox[mainCategoryList] = '';
+    setLocal(LOCAL_KEY, lsData);
+    markup(lsData);
   }
 });
 

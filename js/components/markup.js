@@ -21,6 +21,7 @@ export function markup(obj) {
     buttons[key].textContent = path.buttons[index];
   }
   elements.resetData.textContent = path.resetButton;
+  elements.resetCategory.textContent = path.resetCategoryButton;
   inputs.searchCity.placeholder = path.placeholder;
   if (obj.category === '-1') {
     lists.main.innerHTML = '';

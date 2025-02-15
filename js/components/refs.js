@@ -31,6 +31,7 @@ export const elements = {
   addCheckBox: choose('[data-addCheckBox]'),
   addCheckBoxLabel: choose('[data-addCheckBox-label]'),
   resetData: choose('[data-reset]'),
+  resetCategory: choose('[ data-reset-category]'),
   deleteButton: choose('[data-deleteUserBox]'),
 };
 
