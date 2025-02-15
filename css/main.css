@@ -540,6 +540,7 @@ section {
   -webkit-box-shadow: var(--shadow-main);
           box-shadow: var(--shadow-main);
   white-space: nowrap;
+    border-radius: 5px;
 }
 .button-deleteUserBox {
   -webkit-box-shadow: none;
