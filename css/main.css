@@ -790,6 +790,7 @@ footer {
           box-sizing: border-box;
   width: 100%;
   background-color: var(--main-bgc);
+    background-size: cover;
 }
 
 header {
