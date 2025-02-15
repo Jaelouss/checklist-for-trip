@@ -1,15 +1,7 @@
-export function classAdd(obj) {
-  for (const key in obj) {
-    obj[key].classList.add('visually-hidden');
-  }
+export function classAdd(elem, className) {
+  elem.classList.add(className);
 }
 
-export function cLassRemove(obj, dataValue) {
-  for (const key in obj) {
-    const elem = obj[key];
-    const elemData = elem.getAttribute('data-list');
-    if (elemData === dataValue) {
-      elem.classList.remove('visually-hidden');
-    }
-  }
+export function classRemove(elem, className) {
+  elem.classList.remove(className);
 }

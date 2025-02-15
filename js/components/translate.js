@@ -2,8 +2,10 @@ export const travel = {
   eng: {
     title: 'Check list for the trip',
     buttons: ['City', 'Campsite', 'Beach', 'Active', 'Hotels/Spa', 'Car'],
+    resetButton: 'Reset All',
     mainTitle: 'Welcome to a check-in for travel!',
     mainParagraph: 'Choose the type of travel from the tabs above.',
+    addCheckBox: 'Add Your checkbox in list',
     placeholder: 'Search for the city ...',
     trip: {
       city: {
@@ -153,7 +155,7 @@ export const travel = {
           'Snorkeling gear',
           'Fins',
         ],
-        nightlife: [
+        'night life': [
           'Book a table',
           'Comfortable shoes',
           'ID',
@@ -257,7 +259,7 @@ export const travel = {
           'Spa robe',
           'Personalized care',
         ],
-        luxuryHotel: [
+        'luxury hotel': [
           'Book a room',
           'Booking conditions',
           'Comfortable clothes',
@@ -277,7 +279,7 @@ export const travel = {
           'Concierge service',
           'Gift shop',
         ],
-        boutiqueHotel: [
+        'boutique hotel': [
           'Unique room',
           'Additional services',
           'Comfortable clothes',
@@ -298,7 +300,7 @@ export const travel = {
         ],
       },
       car: {
-        roadTrip: [
+        'road trip': [
           'Car condition',
           'Car refueling',
           'First aid kit',
@@ -317,7 +319,7 @@ export const travel = {
           'Emergency kit',
           'Roadside assistance',
         ],
-        carRental: [
+        'car rental': [
           'Book a car',
           'Rental conditions',
           "Driver's license",
@@ -367,8 +369,10 @@ export const travel = {
       'Готелі/Спа',
       'Автомобіль',
     ],
+    resetButton: 'Скинути все',
     mainTitle: 'Ласкаво просимо до чек-листу для подорожей!',
     mainParagraph: 'Оберіть тип подорожі з табів вище.',
+    addCheckBox: 'Додайте свій чекбокс до списку',
     placeholder: 'Пошук міста...',
     trip: {
       місто: {

@@ -1,75 +1,145 @@
+import {
+  buttons,
+  lists,
+  inputs,
+  langBtn,
+  elements,
+  lsData,
+  LOCAL_KEY,
+} from './refs.js';
+import { setLocal, getLocal, loadUserSettings } from './localStorage.js';
+import { classAdd, classRemove } from './classChange.js';
 import { travel } from './translate.js';
-import { buttons, lists, elements } from './refs.js';
 
-export function translate(lang, translateObj, category, radioCheckID) {
-  const translate = translateObj[lang];
-  const buttonLabels = translateObj[lang].buttons;
-  document.title = translate.title;
-  elements.searchInput.placeholder = translate.placeholder;
-  Object.keys(buttons).forEach((key, index) => {
-    buttons[key].textContent = buttonLabels[index];
-  });
-  if (category !== '-1') {
-    addMainCheckBox(lang, travel, category, radioCheckID);
-    if (radioCheckID !== '-1') {
-      addSubCheckBox(lang, travel, category, radioCheckID);
+export function markup(obj) {
+  classAdd(elements.addCheckBox, 'visually-hidden');
+  const path = travel[obj.lang];
+  document.title = path.title;
+
+  for (const key in buttons) {
+    const index = buttons[key].dataset.tab;
+    buttons[key].textContent = path.buttons[index];
+  }
+  elements.resetData.textContent = path.resetButton;
+  inputs.searchCity.placeholder = path.placeholder;
+  if (obj.category === '-1') {
+    lists.main.innerHTML = '';
+    lists.sub.innerHTML = '';
+    elements.mainTitle.textContent = path.mainTitle;
+    elements.mainParagraph.textContent = path.mainParagraph;
+  }
+  if (obj.category !== '-1') {
+    addMainCategory(obj);
+    if (obj.subCategory !== '-1') {
+      addSubCategory(obj);
+      elements.addCheckBoxLabel.textContent = path.addCheckBox;
+      addUserCheckBox(obj);
+      loadCheckedBox(obj);
     }
   }
-  if (category === '-1') {
-    lists.sub.innerHTML = '';
-    lists.main.innerHTML = '';
-    elements.mainTitle.textContent = translate.mainTitle;
-    elements.mainParagraph.textContent = translate.mainParagraph;
+}
+
+function addMainCategory(obj) {
+  lists.main.innerHTML = '';
+  lists.sub.innerHTML = '';
+  elements.mainTitle.innerHTML = '';
+  elements.mainParagraph.innerHTML = '';
+
+  const nameEng = Object.keys(travel.eng.trip);
+
+  const path = travel[obj.lang];
+  const tabList = Object.keys(path.trip);
+  const tabCategory = Object.keys(path.trip[tabList[obj.category]]);
+
+  const mainTripMarkup = tabCategory
+    .map((elem, index) => {
+      return `
+    <li class="item main__item">
+      <label for="${index}_main">
+      <input type="radio" name="${
+        nameEng[lsData.category]
+      }" id="${index}_main" />${elem}
+      </label>
+    </li>
+`;
+    })
+    .join('');
+
+  lists.main.insertAdjacentHTML('afterbegin', mainTripMarkup);
+
+  classAdd(elements.addCheckBox, 'visually-hidden');
+}
+function addSubCategory(obj) {
+  lists.sub.innerHTML = '';
+
+  const nameEng = Object.keys(travel.eng.trip);
+  const nameSubEng = Object.keys(travel.eng.trip[nameEng[lsData.category]]);
+
+  const path = travel[obj.lang];
+  const tabList = Object.keys(path.trip);
+  const tabCategory = Object.keys(path.trip[tabList[obj.category]]);
+  const tabKeys = Object.keys(obj.userSelectedRadioBox);
+  const subTabIndex = obj.userSelectedRadioBox[tabKeys[obj.category]];
+  const choosedSubCategory =
+    path.trip[tabList[obj.category]][tabCategory[subTabIndex]];
+  if (tabKeys[subTabIndex]) {
+    document.getElementById(`${subTabIndex}_main`).checked = 'true';
+    const subTripMarkup = choosedSubCategory
+      .map((elem, index) => {
+        return `
+    <li class="item main__item-sub">
+      <label for="${index}_sub">
+      <input type="checkbox" name="${nameSubEng[subTabIndex]}" id="${index}_sub" />${elem}
+      </label>
+    </li>
+`;
+      })
+      .join('');
+    lists.sub.insertAdjacentHTML('afterbegin', subTripMarkup);
+
+    classRemove(elements.addCheckBox, 'visually-hidden');
   }
 }
 
-export function addMainCheckBox(lang, translateObj, category, radioCheckID) {
-  for (const key in elements) {
-    elements[key].innerHTML = '';
+export function addUserCheckBox(obj) {
+  const mainCategoryList = document.querySelector('input[type="radio"]')?.name;
+  const subCategoryList = document.querySelector(
+    'input[type="checkbox"]'
+  )?.name;
+  if (subCategoryList) {
+    const userCheckBox =
+      obj.userAddedCheckBox[mainCategoryList][subCategoryList];
+
+    if (userCheckBox.length !== 0) {
+      const addUserCheckBox = userCheckBox
+        .map((elem, index) => {
+          if (document.getElementById(elem.id)) return;
+          return `
+    <li  class="item main__item-sub__user" data-user_added="${index}_sub_user" id="${elem.id}" >
+      <label for="${elem.id}_sub_user">
+      <input type="checkbox" id="${elem.id}_sub_user" name="${subCategoryList}" data-userAddedBox />${elem.text}
+      </label>
+      <button class='button button-deleteUserBox' data-deleteUserBox>X</button>
+    </li>
+`;
+        })
+        .join('');
+      lists.sub.insertAdjacentHTML('beforeend', addUserCheckBox);
+    }
   }
-  const tripArr = Object.keys(translateObj[lang].trip);
-  const checkMain = translateObj[lang].trip[tripArr[category]];
-  const mainCheckBox = Object.keys(checkMain)
-    .map((elem, index) => {
-      return `
-        <li class='item item-main'>
-          <label class='label label-main' for='${index}'>
-            <input
-              type='radio'
-              id='${index}'
-              class='checkbox checkbox-main'
-              name='${category}'
-            />
-            ${elem}
-          </label>
-        </li>
-      `;
-    })
-    .join('');
-  lists.main.innerHTML = mainCheckBox;
 }
 
-export function addSubCheckBox(lang, translateObj, category, radioCheckID) {
-  const tripArr = Object.keys(translateObj[lang].trip);
-  const checkMain = Object.values(translateObj[lang].trip[tripArr[category]]);
-  const radioCheckIndex = parseInt(radioCheckID, 10);
-  const subCategory = checkMain[radioCheckIndex];
-  const subCheckBox = subCategory
-    .map((elem, index) => {
-      return `
-        <li class='item item-sub'>
-          <label for='${index}' class='label label-sub'>
-            <input
-              type='checkbox'
-              id='${index}'
-              class='checkbox checkbox-sub'
-              name='${elem}'
-            />
-            ${elem}
-          </label>
-        </li>
-      `;
-    })
-    .join('');
-  lists.sub.innerHTML = subCheckBox;
+function loadCheckedBox(obj) {
+  const mainCategoryList = document.querySelector('input[type="radio"]')?.name;
+  const subCategoryList = document.querySelector(
+    'input[type="checkbox"]'
+  )?.name;
+  if (subCategoryList) {
+    const idBox =
+      lsData.userSelectedCheckBox[mainCategoryList][subCategoryList];
+
+    idBox.forEach((elem) => {
+      document.getElementById(`${elem}`).checked = 'true';
+    });
+  }
 }
