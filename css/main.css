@@ -282,7 +282,7 @@ a {
 :root {
   --absolute-white: #fff;
   --absolute-black: #000;
-  --main-bgc: #faf1ed;
+  --main-bgc: ##f4eddd;
   --font-family: "Fluorine Lite", sans-serif;
   --second-family: "Fluorine Lite", sans-serif;
   --shadow-main: 0.3125rem 0.125rem 0 0.0625rem var(--absolute-black);
@@ -668,7 +668,7 @@ section {
 }
 
 .input:focus {
-  background-color: #fffbfb;
+  background-color: #f2ebdb;
 }
 
 .custom-checkbox {
@@ -783,6 +783,7 @@ body {
 header,
 main,
 footer {
+  background-image: url(../img/paper.jpg);
   border-inline: var(--border-black);
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
