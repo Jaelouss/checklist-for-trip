@@ -61,6 +61,37 @@ lists.sub.addEventListener('change', (event) => {
   setLocal(LOCAL_KEY, lsData);
 });
 
+lists.sub.addEventListener('click', (event) => {
+  const button = event.target.closest('[data-deleteuserbox]');
+  if (!button) return;
+  const elem = button.closest('[data-user_added]');
+  if (!elem) return;
+
+  const id = `${elem.id}_sub_user`;
+  const mainCategoryList = document.querySelector('input[type="radio"]')?.name;
+  const subCategoryList = document.querySelector(
+    'input[type="checkbox"]'
+  )?.name;
+
+  if (subCategoryList) {
+    const userObjAdd = lsData.userAddedCheckBox[mainCategoryList][
+      subCategoryList
+    ].filter((item) => item.id !== elem.id);
+
+    lsData.userAddedCheckBox[mainCategoryList][subCategoryList] = userObjAdd;
+
+    const userObjCheck = lsData.userSelectedCheckBox[mainCategoryList][
+      subCategoryList
+    ].filter((item) => item !== id);
+
+    lsData.userSelectedCheckBox[mainCategoryList][subCategoryList] =
+      userObjCheck;
+
+    setLocal(LOCAL_KEY, lsData);
+    elem.remove();
+  }
+});
+
 inputs.addCheckBox.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     let userCheckBox = { id: `${nanoid()}`, text: event.target.value };
@@ -78,36 +109,6 @@ inputs.addCheckBox.addEventListener('keydown', (event) => {
 
     event.target.value = '';
     addUserCheckBox(lsData);
-  }
-});
-
-lists.sub.addEventListener('click', (event) => {
-  if (event.target.tagName === 'BUTTON') {
-    const elem = event.target.closest('[data-user_added]');
-    const id = `${elem.id}_sub_user`;
-    const mainCategoryList = document.querySelector(
-      'input[type="radio"]'
-    )?.name;
-    const subCategoryList = document.querySelector(
-      'input[type="checkbox"]'
-    )?.name;
-    if (subCategoryList) {
-      const userObjAdd = lsData.userAddedCheckBox[mainCategoryList][
-        subCategoryList
-      ].filter((item) => item.id !== elem.id);
-      lsData.userAddedCheckBox[mainCategoryList][subCategoryList] = userObjAdd;
-
-      const userObjCheck = lsData.userSelectedCheckBox[mainCategoryList][
-        subCategoryList
-      ].filter((item) => item !== id);
-
-      // console.log('item:', item);
-      lsData.userSelectedCheckBox[mainCategoryList][subCategoryList] =
-        userObjCheck;
-
-      setLocal(LOCAL_KEY, lsData);
-      elem.remove();
-    }
   }
 });
 

@@ -100,11 +100,6 @@ html {
     (наприклад, коли потрібно "прикріпити" футер донизу сайту)
    */
   height: 100%;
-  /**
-    Прибираємо стрибок інтерфейсу по горизонталі
-    при появі / зникненні скролбару
-   */
-  scrollbar-gutter: stable;
 }
 
 /**
@@ -196,15 +191,8 @@ svg * {
   }
 }
 @font-face {
-  font-family: "Chewy";
-  src: url("../fonts/Chewy-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Jersey 15";
-  src: url("../fonts/Jersey15-Regular.woff2") format("woff2");
+  font-family: "Fluorine Lite";
+  src: url("../fonts/FluorineLite.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -294,13 +282,14 @@ a {
 :root {
   --absolute-white: #fff;
   --absolute-black: #000;
-  --font-family: "Chewy", sans-serif;
-  --second-family: "Jersey 15", sans-serif;
-  --shadow-main: 0.375rem 0.375rem 0 0.125rem var(--absolute-black);
+  --main-bgc: #faf1ed;
+  --font-family: "Fluorine Lite", sans-serif;
+  --second-family: "Fluorine Lite", sans-serif;
+  --shadow-main: 0.3125rem 0.125rem 0 0.0625rem var(--absolute-black);
   --border-black: 0.125rem solid var(--absolute-black);
   --transition-duration: 0.2s;
   --100vw: calc(100vw - var(--scrollbar-width));
-  --container-width: clamp(23.75rem, -1.03125rem + 101.6666666667vw, 100rem);
+  --container-width: clamp(23.75rem, -0.7843137255rem + 100.6535947712vw, 120rem);
   --container-padding-x: 1rem;
 }
 @media (width > 47.99875rem) {
@@ -336,6 +325,9 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -385,35 +377,36 @@ h6,
 
 h1,
 .h1 {
-  font-size: clamp(1rem, 0.35rem + 2.6666666667vw, 3rem);
+  font-size: clamp(1.875rem, 1.556372549rem + 1.3071895425vw, 3.125rem);
 }
 
 h2,
 .h2 {
-  font-size: clamp(1rem, 0.35rem + 2.6666666667vw, 3rem);
+  font-size: clamp(1rem, 0.4901960784rem + 2.091503268vw, 3rem);
 }
 
 h3,
 .h3 {
-  font-size: clamp(1rem, 0.35rem + 2.6666666667vw, 3rem);
+  font-size: clamp(1rem, 0.4901960784rem + 2.091503268vw, 3rem);
 }
 
 h4,
 .h4 {
-  font-size: clamp(1rem, 0.35rem + 2.6666666667vw, 3rem);
+  font-size: clamp(1rem, 0.4901960784rem + 2.091503268vw, 3rem);
 }
 
 h5,
 .h5 {
-  font-size: clamp(1rem, 0.35rem + 2.6666666667vw, 3rem);
+  font-size: clamp(1rem, 0.4901960784rem + 2.091503268vw, 3rem);
 }
 
 h6,
 .h6 {
-  font-size: clamp(1rem, 0.35rem + 2.6666666667vw, 3rem);
+  font-size: clamp(1rem, 0.4901960784rem + 2.091503268vw, 3rem);
 }
 
 p {
+  font-size: clamp(1rem, 0.7769607843rem + 0.9150326797vw, 1.875rem);
   font-family: var(--second-family);
   font-weight: 500;
   line-height: 1.5;
@@ -421,23 +414,32 @@ p {
 }
 
 a,
+label,
+input,
 button {
   color: inherit;
-  font-family: var();
+  font-family: var(--font-family);
+  font-size: clamp(0.875rem, 0.6200980392rem + 1.045751634vw, 1.875rem);
 }
 @media (any-hover: hover) {
   a:hover,
+  label:hover,
+  input:hover,
   button:hover {
     color: var();
   }
 }
 @media (any-hover: none) {
   a:active,
+  label:active,
+  input:active,
   button:active {
     color: var();
   }
 }
 a[class][type],
+label[class][type],
+input[class][type],
 button[class][type] {
   text-decoration: none;
 }
@@ -480,16 +482,100 @@ button[aria-label]::before {
 }
 
 section {
-  margin-bottom: clamp(0.625rem, 0.21875rem + 1.6666666667vw, 1.875rem);
+  margin-bottom: clamp(0.625rem, 0.306372549rem + 1.3071895425vw, 1.875rem);
 }
 
-body {
-  background-image: url("../img/silhouette-grass-sunset.webp");
-  background-size: cover;
-  background-position: center;
+.header {
+  width: 100%;
+  max-width: 120rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-inline: 0.625rem;
+  padding-bottom: 0.625rem;
 }
 
-main {
+@media (width <= 47.99875rem) {
+  .nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (width <= 35.06125rem) {
+  .nav {
+    display: grid;
+    gap: 0.625rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width <= 47.99875rem) {
+  .lang {
+    display: grid;
+    gap: 0.625rem;
+  }
+}
+
+.logo-img {
+  width: clamp(1.875rem, 1.556372549rem + 1.3071895425vw, 3.125rem);
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.logo-link {
+  display: inline-block;
+  min-width: 50px;
+  height: auto;
+}
+
+.button {
+  background-color: var(--main-bgc);
+  padding-inline: 0.625rem;
+  -webkit-box-shadow: var(--shadow-main);
+          box-shadow: var(--shadow-main);
+  white-space: nowrap;
+}
+.button-deleteUserBox {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  padding: 0;
+}
+
+.delUserCheckBox {
+  width: 20px;
+}
+
+.main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-bottom: 1.25rem;
+}
+.main__inner {
+  position: absolute;
+  top: 45%;
+}
+.main__paragraph {
+  text-align: center;
+}
+
+.list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -500,7 +586,218 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  gap: 0.3125rem;
+}
+
+.main__list {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 1.25rem;
+  margin-bottom: 0.625rem;
+}
+@media (width <= 35.06125rem) {
+  .main__list {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+.main__list-sub {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  -webkit-column-gap: 0.9375rem;
+     -moz-column-gap: 0.9375rem;
+          column-gap: 0.9375rem;
+  max-width: 90%;
+}
+@media (width <= 26.93625rem) {
+  .main__list-sub {
+    justify-items: center;
+    grid-template-columns: 1fr;
+    max-width: 80%;
+  }
+}
+.main__list-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+.main__item {
+  padding-inline: 0.3125rem;
+  border-bottom: var(--border-black);
+}
+.main__item-sub__user {
+  width: 90%;
+  border-bottom: var(--border-black);
+}
+.main__addCheckBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.input {
+  background-color: var(--main-bgc);
+  outline: none;
+  border-radius: 0.4375rem;
+  padding-block: 0.3125rem;
+  padding-inline: 0.9375rem;
+}
+@media (width <= 26.93625rem) {
+  .input__search {
+    width: 100%;
+  }
+}
+
+.input:focus {
+  background-color: #fffbfb;
+}
+
+.custom-checkbox {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  padding-right: 0.625rem;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+.checkbox-icon {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Галочка */
+.checkmark {
+  stroke: #000;
+  stroke-dasharray: 70;
+  stroke-dashoffset: 70;
+  -webkit-transition: stroke-dashoffset 0.3s ease-in-out;
+  transition: stroke-dashoffset 0.3s ease-in-out;
+}
+
+.underline {
+  stroke: #777;
+  stroke-width: 2;
+  -webkit-transition: stroke 0.2s;
+  transition: stroke 0.2s;
+  opacity: 0.5;
+}
+
+/* Стан при виборі */
+input[type=checkbox]:checked + .checkbox-icon .underline {
+  stroke: #000;
+}
+
+input[type=checkbox]:checked + .checkbox-icon .checkmark {
+  stroke-dashoffset: 0;
+}
+
+input[type=radio] {
+  accent-color: #000;
+}
+
+.footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-inline: 0.625rem;
+}
+.footer__inner {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+@media (width <= 26.93625rem) {
+  .footer__inner {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    row-gap: 0.625rem;
+  }
+}
+
+.reset-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.625rem;
+}
+@media (width <= 35.06125rem) {
+  .reset-div {
+    display: grid;
+  }
+}
+
+body {
+  width: 90%;
+  background-color: gray;
+  max-width: 120rem;
+  margin-inline: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+header,
+main,
+footer {
+  border-inline: var(--border-black);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  background-color: var(--main-bgc);
+}
+
+header {
+  border-top: var(--border-black);
+}
+
+footer {
+  border-bottom: var(--border-black);
+}
+
+label {
+  text-transform: capitalize;
 }/*# sourceMappingURL=main.css.map */

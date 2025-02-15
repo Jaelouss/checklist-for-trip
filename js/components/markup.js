@@ -89,8 +89,12 @@ function addSubCategory(obj) {
       .map((elem, index) => {
         return `
     <li class="item main__item-sub">
-      <label for="${index}_sub">
-      <input type="checkbox" name="${nameSubEng[subTabIndex]}" id="${index}_sub" />${elem}
+      <label for="${index}_sub" class="custom-checkbox">
+      <input type="checkbox" name="${nameSubEng[subTabIndex]}" id="${index}_sub" />
+      ${elem} <svg class="checkbox-icon" viewBox="0 0 24 24">
+          <line class="underline" x1="2" y1="22" x2="22" y2="22"></line>
+          <path class="checkmark" d="M3 16 C7 24, 14 28, 22 4"></path>
+        </svg>
       </label>
     </li>
 `;
@@ -117,10 +121,16 @@ export function addUserCheckBox(obj) {
           if (document.getElementById(elem.id)) return;
           return `
     <li  class="item main__item-sub__user" data-user_added="${index}_sub_user" id="${elem.id}" >
-      <label for="${elem.id}_sub_user">
-      <input type="checkbox" id="${elem.id}_sub_user" name="${subCategoryList}" data-userAddedBox />${elem.text}
+      <label for="${elem.id}_sub_user" class="custom-checkbox">${elem.text}
+      <input type="checkbox" id="${elem.id}_sub_user" name="${subCategoryList}" data-userAddedBox />
+      <svg class="checkbox-icon" viewBox="0 0 24 24">
+          <line class="underline" x1="2" y1="22" x2="22" y2="22"></line>
+          <path class="checkmark" d="M3 16 C7 24, 14 28, 22 4"></path>
+        </svg>
       </label>
-      <button class='button button-deleteUserBox' data-deleteUserBox>X</button>
+      <button class='button button-deleteUserBox' data-deleteUserBox>
+      <img class='delUserCheckBox' src="./img/delUserCheckBox.svg" alt="delButton" />
+      </button>
     </li>
 `;
         })

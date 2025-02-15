@@ -12,7 +12,15 @@
     <title>Check list for the trip</title>
   </head>
   <body>
-    <header>
+    <header class="header">
+      <a class="logo-link" href="#"
+        ><img
+          class="logo-img"
+          src="./img/favicon.png"
+          alt="logo"
+          width="50"
+          height="50"
+      /></a>
       <nav class="nav">
         <button type="button" class="button button__tab" data-tab="0">
           City
@@ -38,16 +46,12 @@
         <button class="button button__lang-select" data-lang="ua">UA</button>
       </div>
     </header>
-    <main class="main">
-      <h1 class="main__title" data-main-title>
-        Welcome to a check-in for travel!
-      </h1>
-      <p class="main__paragraph" data-main-paragraph>
-        Choose the type of travel from the tabs above.
-      </p>
+    <main class="main container">
+      <div class="main__list-inner">
+        <ul class="list main__list" data-list></ul>
+        <ol class="list main__list-sub" data-sub-list></ol>
+      </div>
 
-      <ul class="list main__list" data-list></ul>
-      <ol class="list main__list-sub" data-sub-list></ol>
       <div class="main__addCheckBox visually-hidden" data-addCheckBox>
         <label
           for="addCeckBox"
@@ -62,26 +66,38 @@
           class="input input__add"
         />
       </div>
+      <div class="main__inner">
+        <h1 class="main__title" data-main-title>
+          Welcome to a check-in for travel!
+        </h1>
+        <p class="main__paragraph" data-main-paragraph>
+          Choose the type of travel from the tabs above.
+        </p>
+      </div>
     </main>
-    <footer>
-      <button data-reset type="button" class="button button__reset">
-        Reset All
-      </button>
-      <button
-        data-reset-category
-        type="button"
-        class="button button__reset button__reset-category"
-      >
-        Reset Category
-      </button>
-      <label for="search" class="label label__search">
-        <input
-          type="text"
-          class="input input__search"
-          id="search"
-          placeholder="Search for the city ..."
-        />
-      </label>
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="reset-div">
+          <button data-reset type="button" class="button button__reset">
+            Reset All
+          </button>
+          <button
+            data-reset-category
+            type="button"
+            class="button button__reset button__reset-category"
+          >
+            Reset Category
+          </button>
+        </div>
+        <label for="search" class="label label__search">
+          <input
+            type="text"
+            class="input input__search"
+            id="search"
+            placeholder="Search for the city ..."
+          />
+        </label>
+      </div>
       <a
         href="https://github.com/Jaelouss"
         class="link link__autor"
