@@ -534,23 +534,6 @@ section {
   height: auto;
 }
 
-.button {
-  background-color: var(--main-bgc);
-  padding-inline: 0.625rem;
-  -webkit-box-shadow: var(--shadow-main);
-          box-shadow: var(--shadow-main);
-  white-space: nowrap;
-}
-.button-deleteUserBox {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  padding: 0;
-}
-
-.delUserCheckBox {
-  width: 20px;
-}
-
 .main {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -652,6 +635,7 @@ section {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
 }
 
 .input {
@@ -659,7 +643,10 @@ section {
   outline: none;
   border-radius: 0.4375rem;
   padding-block: 0.3125rem;
-  padding-inline: 0.9375rem;
+  padding-left: 0.625rem;
+  padding-right: 2.5rem;
+  border: none;
+  border-bottom: var(--border-black);
 }
 @media (width <= 26.93625rem) {
   .input__search {
@@ -758,6 +745,9 @@ input[type=radio] {
     row-gap: 0.625rem;
   }
 }
+.footer__searchBox {
+  position: relative;
+}
 
 .reset-div {
   display: -webkit-box;
@@ -769,6 +759,68 @@ input[type=radio] {
   .reset-div {
     display: grid;
   }
+}
+
+.button {
+  background-color: var(--main-bgc);
+  padding-inline: 0.625rem;
+  -webkit-box-shadow: var(--shadow-main);
+          box-shadow: var(--shadow-main);
+  white-space: nowrap;
+}
+.button-deleteUserBox {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  padding: 0;
+}
+.button__confirm {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  top: 69%;
+  left: 90%;
+}
+.button__search {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  top: 50%;
+  left: 94%;
+}
+@media (width > 26.93625rem) {
+  .button__search {
+    top: 30%;
+    left: 90%;
+  }
+}
+@media (width > 35.06125rem) {
+  .button__search {
+    top: 48%;
+    left: 90%;
+  }
+}
+
+.delUserCheckBox {
+  width: 20px;
+}
+
+.hand-drawn-arrow {
+  display: block;
+  width: 2.1875rem;
+  height: 2.1875rem;
+}
+
+.hand-drawn-arrow:hover .arrow {
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  -webkit-transition: -webkit-transform 0.2s ease-out;
+  transition: -webkit-transform 0.2s ease-out;
+  transition: transform 0.2s ease-out;
+  transition: transform 0.2s ease-out, -webkit-transform 0.2s ease-out;
 }
 
 body {

@@ -7,7 +7,8 @@ export const travel = {
     mainTitle: 'Welcome to a check-in for travel!',
     mainParagraph: 'Choose the type of travel from the tabs above.',
     addCheckBox: 'Add Your checkbox in list',
-    placeholder: 'Search for the city ...',
+    placeholder_city: 'Search for the city ...',
+    placeholder_add: 'Dont forget...',
     trip: {
       city: {
         museum: [
@@ -375,7 +376,8 @@ export const travel = {
     mainTitle: 'Ласкаво просимо до чек-листу для подорожей!',
     mainParagraph: 'Оберіть тип подорожі з табів вище.',
     addCheckBox: 'Додайте свій чекбокс до списку',
-    placeholder: 'Пошук міста...',
+    placeholder_city: 'Пошук міста...',
+    placeholder_add: 'Не забути...',
     trip: {
       місто: {
         музей: [

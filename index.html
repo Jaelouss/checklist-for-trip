@@ -60,11 +60,38 @@
           >Add Your checkbox in list</label
         >
         <input
+          placeholder="Dont forget..."
           enterkeyhint="done"
           type="text"
           id="addCheckBox"
           class="input input__add"
         />
+        <button class="button button__confirm" data-add-button>
+          <svg
+            class="hand-drawn-arrow"
+            width="35"
+            height="35"
+            viewBox="0 0 100 100"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10 15 Q5 50 10 85 Q50 95 90 85 Q95 50 90 15 Q50 5 10 15 Z"
+              stroke="black"
+              stroke-width="4"
+              fill="none"
+            />
+            <path
+              class="arrow"
+              d="M30 65 Q48 45 50 45 Q52 45 70 65"
+              stroke="black"
+              stroke-width="4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+            />
+          </svg>
+        </button>
       </div>
       <div class="main__inner">
         <h1 class="main__title" data-main-title>
@@ -89,14 +116,42 @@
             Reset Category
           </button>
         </div>
-        <label for="search" class="label label__search">
-          <input
-            type="text"
-            class="input input__search"
-            id="search"
-            placeholder="Search for the city ..."
-          />
-        </label>
+        <div class="footer__searchBox">
+          <label for="search" class="label label__search">
+            <input
+              type="text"
+              class="input input__search"
+              id="search"
+              placeholder="Search for the city ..."
+            />
+          </label>
+          <button class="button button__search" data-search-button>
+            <svg
+              class="hand-drawn-arrow"
+              width="35"
+              height="35"
+              viewBox="0 0 100 100"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 15 Q5 50 10 85 Q50 95 90 85 Q95 50 90 15 Q50 5 10 15 Z"
+                stroke="black"
+                stroke-width="4"
+                fill="none"
+              />
+              <path
+                class="arrow"
+                d="M30 65 Q48 45 50 45 Q52 45 70 65"
+                stroke="black"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
       <a
         href="https://github.com/Jaelouss"

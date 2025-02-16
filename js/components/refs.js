@@ -9,6 +9,11 @@ export const buttons = {
   car: choose('[data-tab="5"]'),
 };
 
+export const inputsButton = {
+  addButton: choose('[data-add-button]'),
+  searchButton: choose('[data-search-button]'),
+};
+
 export const lists = {
   main: choose('[data-list]'),
   sub: choose('[data-sub-list]'),

@@ -1,5 +1,6 @@
 import {
   buttons,
+  inputsButton,
   lists,
   inputs,
   langBtn,
@@ -112,6 +113,22 @@ inputs.addCheckBox.addEventListener('keydown', (event) => {
   }
 });
 
+inputsButton.addButton.addEventListener('click', (event) => {
+  let userCheckBox = { id: `${nanoid()}`, text: inputs.addCheckBox.value };
+
+  const mainCategoryList = document.querySelector('input[type="radio"]')?.name;
+  const subCategoryList = document.querySelector(
+    'input[type="checkbox"]'
+  )?.name;
+  lsData.userAddedCheckBox[mainCategoryList][subCategoryList].push(
+    userCheckBox
+  );
+  setLocal(LOCAL_KEY, lsData);
+
+  inputs.addCheckBox.value = '';
+  addUserCheckBox(lsData);
+});
+
 inputs.searchCity.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
     const city = event.target.value.trim();
@@ -121,6 +138,16 @@ inputs.searchCity.addEventListener('keydown', (event) => {
       )}`;
       window.open(googleMapsURL, '_blank');
     }
+  }
+});
+
+inputsButton.searchButton.addEventListener('click', (event) => {
+  const city = inputs.searchCity.value.trim();
+  if (city) {
+    const googleMapsURL = `https://www.google.com/maps?q=${encodeURIComponent(
+      city
+    )}`;
+    window.open(googleMapsURL, '_blank');
   }
 });
 

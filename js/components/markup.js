@@ -22,7 +22,8 @@ export function markup(obj) {
   }
   elements.resetData.textContent = path.resetButton;
   elements.resetCategory.textContent = path.resetCategoryButton;
-  inputs.searchCity.placeholder = path.placeholder;
+  inputs.searchCity.placeholder = path.placeholder_city;
+  inputs.addCheckBox.placeholder = path.placeholder_add;
   if (obj.category === '-1') {
     lists.main.innerHTML = '';
     lists.sub.innerHTML = '';
