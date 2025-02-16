@@ -767,6 +767,7 @@ input[type=radio] {
   -webkit-box-shadow: var(--shadow-main);
           box-shadow: var(--shadow-main);
   white-space: nowrap;
+  border-radius: 0.25rem;
 }
 .button-deleteUserBox {
   -webkit-box-shadow: none;
