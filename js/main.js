@@ -95,7 +95,8 @@ lists.sub.addEventListener('click', (event) => {
 
 inputs.addCheckBox.addEventListener('keydown', (event) => {
   if (event.key === 'Enter') {
-    let userCheckBox = { id: `${nanoid()}`, text: event.target.value };
+    if (event.target.value.trim()){
+      let userCheckBox = { id: `${nanoid()}`, text: event.target.value };
 
     const mainCategoryList = document.querySelector(
       'input[type="radio"]'
@@ -111,22 +112,26 @@ inputs.addCheckBox.addEventListener('keydown', (event) => {
     event.target.value = '';
     addUserCheckBox(lsData);
   }
+}
 });
 
 inputsButton.addButton.addEventListener('click', (event) => {
-  let userCheckBox = { id: `${nanoid()}`, text: inputs.addCheckBox.value };
+  if (inputs.addCheckBox.value.trim()) {
 
-  const mainCategoryList = document.querySelector('input[type="radio"]')?.name;
-  const subCategoryList = document.querySelector(
-    'input[type="checkbox"]'
-  )?.name;
-  lsData.userAddedCheckBox[mainCategoryList][subCategoryList].push(
-    userCheckBox
-  );
-  setLocal(LOCAL_KEY, lsData);
+    let userCheckBox = { id: `${nanoid()}`, text: inputs.addCheckBox.value };
 
-  inputs.addCheckBox.value = '';
-  addUserCheckBox(lsData);
+    const mainCategoryList = document.querySelector('input[type="radio"]')?.name;
+    const subCategoryList = document.querySelector(
+      'input[type="checkbox"]'
+    )?.name;
+    lsData.userAddedCheckBox[mainCategoryList][subCategoryList].push(
+      userCheckBox
+    );
+    setLocal(LOCAL_KEY, lsData);
+
+    inputs.addCheckBox.value = '';
+    addUserCheckBox(lsData);
+  }
 });
 
 inputs.searchCity.addEventListener('keydown', (event) => {
