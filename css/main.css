@@ -628,14 +628,27 @@ section {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+.main__addCheckBox-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  position: relative;
 }
 
 .input {
@@ -643,12 +656,21 @@ section {
   outline: none;
   border-radius: 0.4375rem;
   padding-block: 0.3125rem;
-  padding-left: 0.625rem;
-  padding-right: 2.5rem;
+  padding-inline: 0.625rem;
   border: none;
   border-bottom: var(--border-black);
 }
 @media (width <= 26.93625rem) {
+  .input__search {
+    width: 100%;
+  }
+}
+@media (width > 26.93625rem) {
+  .input__search {
+    width: 7.5rem;
+  }
+}
+@media (width > 35.06125rem) {
   .input__search {
     width: 100%;
   }
@@ -735,6 +757,9 @@ input[type=radio] {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 @media (width <= 26.93625rem) {
   .footer__inner {
@@ -746,7 +771,15 @@ input[type=radio] {
   }
 }
 .footer__searchBox {
-  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .reset-div {
@@ -754,6 +787,7 @@ input[type=radio] {
   display: -ms-flexbox;
   display: flex;
   gap: 0.625rem;
+  width: 70%;
 }
 @media (width <= 35.06125rem) {
   .reset-div {
@@ -777,42 +811,10 @@ input[type=radio] {
 .button__confirm {
   -webkit-box-shadow: none;
           box-shadow: none;
-  position: absolute;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  top: 69%;
-  left: 90%;
-}
-@media (width > 63.99875rem) {
-  .button__confirm {
-    left: 87%;
-  }
-}
-@media (width > 89.99875rem) {
-  .button__confirm {
-    left: 84%;
-  }
 }
 .button__search {
   -webkit-box-shadow: none;
           box-shadow: none;
-  position: absolute;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  top: 50%;
-  left: 94%;
-}
-@media (width > 26.93625rem) {
-  .button__search {
-    top: 30%;
-    left: 90%;
-  }
-}
-@media (width > 35.06125rem) {
-  .button__search {
-    top: 48%;
-    left: 90%;
-  }
 }
 
 .delUserCheckBox {
