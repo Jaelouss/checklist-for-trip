@@ -783,6 +783,16 @@ input[type=radio] {
   top: 69%;
   left: 90%;
 }
+@media (width > 63.99875rem) {
+  .button__confirm {
+    left: 87%;
+  }
+}
+@media (width > 89.99875rem) {
+  .button__confirm {
+    left: 84%;
+  }
+}
 .button__search {
   -webkit-box-shadow: none;
           box-shadow: none;
