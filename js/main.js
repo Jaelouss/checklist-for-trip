@@ -24,16 +24,28 @@ markup(lsData);
 elements.header.addEventListener('click', (event) => {
   if (event.target.closest('[data-lang]')) {
     lsData.lang = event.target.dataset.lang;
+
+    Object.values(langBtn).forEach(btn => classRemove(btn, 'tab-animation'));
+    classAdd(event.target, 'tab-animation')
+
+    
     setLocal(LOCAL_KEY, lsData);
     markup(lsData);
+
   }
   if (event.target.closest('[data-tab]')) {
     lsData.category = event.target.dataset.tab;
+
+Object.values(buttons).forEach(btn => classRemove(btn, 'tab-animation'));
+    classAdd(event.target, 'tab-animation')
+
     setLocal(LOCAL_KEY, lsData);
     markup(lsData);
   }
   return;
 });
+
+
 
 lists.main.addEventListener('change', (event) => {
   let selectedCategory = Object.keys(lsData.userSelectedRadioBox);
